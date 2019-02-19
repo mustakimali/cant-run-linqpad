@@ -8,9 +8,9 @@ namespace CantRunLinqPad
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Init();
+            await Init();
             //
             // Begin coding below
             // 
