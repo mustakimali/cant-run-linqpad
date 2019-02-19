@@ -24,6 +24,7 @@ namespace CantRunLinqPad.Core
             }
 
             // to be implemented
+            await Task.CompletedTask;
         }
 
         private static void Error(string message)
