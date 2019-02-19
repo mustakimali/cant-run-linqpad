@@ -3,5 +3,5 @@
 When you can't run LinqPad
 
 ```
-curl -sSL https://raw.githubusercontent.com/mustakimali/cant-run-linqpad/master/start.sh | bash
+curl -sSL https://raw.githubusercontent.com/mustakimali/cant-run-linqpad/master/core/start.sh | bash
 ```
