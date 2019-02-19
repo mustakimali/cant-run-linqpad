@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Threading.Tasks;
 using CantRunLinqPad.Core;
+using static System.Console;
 
 namespace CantRunLinqPad
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
-            // code
+            Clear();
+
+            // Begin coding here
+            // 
+            "Your code is running and waiting for any changes to Programs.cs".Dump();
         }
     }
 }
