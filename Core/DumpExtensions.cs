@@ -11,20 +11,21 @@ namespace CantRunLinqPad.Core
 
         static DumpExtensions()
         {
-            _dumpers = new[] 
+            _dumpers = new IDumper[]
             {
+                new BasicTypesDumper(),
                 new EverythingElseDumper()
             };
         }
         public static T Dump<T>(this T obj, string title = null)
         {
-            if(!string.IsNullOrEmpty(title))
+            if (!string.IsNullOrEmpty(title))
             {
                 WriteLine(title);
             }
             foreach (var dumper in _dumpers)
             {
-                if(dumper.CanDump(obj))
+                if (dumper.CanDump(obj))
                 {
                     dumper.Dump(obj);
                     break;
