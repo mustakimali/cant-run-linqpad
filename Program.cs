@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using CantRunLinqPad.Core;
 using static System.Console;
+using static CantRunLinqPad.Core.Util;
 
 namespace CantRunLinqPad
 {
@@ -9,9 +10,9 @@ namespace CantRunLinqPad
     {
         static void Main(string[] args)
         {
-            Clear();
-
-            // Begin coding here
+            Init();
+            //
+            // Begin coding below
             // 
             "Your code is running and waiting for any changes to Programs.cs".Dump();
         }
