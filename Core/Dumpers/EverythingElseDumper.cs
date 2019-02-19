@@ -12,7 +12,10 @@ namespace CantRunLinqPad.Core.Dumpers
 
         public void Dump(object obj)
         {
-            WriteLine(JsonConvert.SerializeObject(obj, Formatting.Indented));
+            WriteLine(JsonConvert.SerializeObject(obj, Formatting.Indented, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            }));
         }
     }
 }
