@@ -16,11 +16,23 @@ namespace CantRunLinqPad.Core
         private const string CSharpCommentLineStartWith = "//";
 
         private static readonly Regex ParseNugetCommand = new Regex(@"(Install-Package |dotnet add package )([^ ]*).*[Vv]ersion ([0-9.]*]*)", RegexOptions.Compiled);
+        private static readonly string Line = new string('-', 70);
 
-        public static async Task Init()
+        public static async Task Init(Func<Task> entryPoint)
         {
             Clear();
             await InstallNugetPackages();
+
+            try
+            {
+                await entryPoint();
+            }
+            catch (Exception ex)
+            {
+                WriteLine(Line);
+                ex.Dump();
+                WriteLine(Line);
+            }
         }
 
         private static async Task InstallNugetPackages()

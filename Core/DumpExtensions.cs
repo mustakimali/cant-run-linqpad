@@ -14,6 +14,7 @@ namespace CantRunLinqPad.Core
             _dumpers = new IDumper[]
             {
                 new BasicTypesDumper(),
+                new ExceptionDumper(),
                 new EverythingElseDumper()
             };
         }
