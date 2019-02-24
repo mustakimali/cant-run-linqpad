@@ -5,10 +5,11 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <RootNamespace>CantRunLinqPad</RootNamespace>
+    <DefaultItemExcludes>Core/**</DefaultItemExcludes>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference IsRequired="True" Include="Newtonsoft.Json" Version="12.0.1" />
+    <ProjectReference Include="Core\cant-run-linqpad.Core.csproj" />
   </ItemGroup>
 
 </Project>

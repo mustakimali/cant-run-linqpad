@@ -57,7 +57,7 @@ namespace CantRunLinqPad.Core
         {
             var nugetPackages = new List<NugetReference>();
 
-            foreach (var line in await File.ReadAllLinesAsync(codeFile))
+            foreach (var line in File.ReadAllLines(codeFile))
             {
                 var lineTrimmed = line.Trim(' ', '\t');
 
