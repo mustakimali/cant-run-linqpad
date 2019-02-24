@@ -124,7 +124,7 @@ namespace CantRunLinqPad.Core
 
         public void Dispose()
         {
-            GC.SuppressFinalize(this);
+            // 
         }
     }
 }
