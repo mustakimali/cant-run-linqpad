@@ -13,21 +13,32 @@ namespace CantRunLinqPad.Core
         {
             _dumpers = new IDumper[]
             {
-                new BasicTypesDumper(),
                 new ExceptionDumper(),
+                new BasicTypesDumper(),
                 new EverythingElseDumper()
             };
         }
-        public static T Dump<T>(this T obj, string title = null)
+        public static T Dump<T>(this T obj, string title = null, int indent = 0)
         {
             if (!string.IsNullOrEmpty(title))
             {
                 WriteLine(title);
             }
+            
+            if(obj == null)
+            {
+                "{NULL}".Dump();
+                return obj;
+            }
+
             foreach (var dumper in _dumpers)
             {
                 if (dumper.CanDump(obj))
                 {
+                    if(indent > 0)
+                    {
+                        Write(new string('\t', indent));
+                    }
                     dumper.Dump(obj);
                     break;
                 }

@@ -13,8 +13,8 @@ namespace CantRunLinqPad.Core.Dumpers
         {
             var ex = (Exception)obj;
 
-            $"Exception of type {ex.GetType().Name} is thrown".Dump("EXCEPTION");
-            ex.GetBaseException().Message.Dump();
+            $"EXCEPTION OF TYPE {ex.GetType().Name} IS THROWN".Dump(); 
+            ex.GetBaseException().Message.Dump(indent: 1);
             ex.StackTrace.Dump("STACK TRACE:");
         }
     }
