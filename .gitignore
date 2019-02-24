@@ -267,3 +267,4 @@ NuGet.Config
 .idea
 # coverage file
 coverage.opencover.xml
+*.bak

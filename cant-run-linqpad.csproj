@@ -1,5 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.0</TargetFramework>
@@ -7,9 +6,7 @@
     <RootNamespace>CantRunLinqPad</RootNamespace>
     <DefaultItemExcludes>Core/**</DefaultItemExcludes>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="Core\cant-run-linqpad.Core.csproj" />
   </ItemGroup>
-
 </Project>

@@ -44,16 +44,16 @@ namespace CantRunLinqPad.Core
                 Error($"Can't locate the file: {codeFile}");
             }
 
-            // to be implemented
-            var nugetPackages = await ParseNugetPackages(codeFile);
+            var nugetPackages = await ParseNugetPackagesDeclarations(codeFile);
+            const string csprojPath = "cant-run-linqpad.csproj";
 
-            foreach (var pkg in nugetPackages)
+            using(var updater = new NugetReferenceUpdater(csprojPath))
             {
-                WriteLine($"Detected NuGet Package: {pkg.PackageName}, v{pkg.Version}");
+                updater.AddOrUpdateReferences(nugetPackages);
             }
         }
 
-        private static async Task<List<NugetReference>> ParseNugetPackages(string codeFile)
+        private static async Task<List<NugetReference>> ParseNugetPackagesDeclarations(string codeFile)
         {
             var nugetPackages = new List<NugetReference>();
 
@@ -94,13 +94,6 @@ namespace CantRunLinqPad.Core
             reference = default;
             return false;
         }
-
-        private struct NugetReference
-        {
-            public string PackageName { get; set; }
-            public string Version { get; set; }
-        }
-
 
         private static void Error(string message)
         {
