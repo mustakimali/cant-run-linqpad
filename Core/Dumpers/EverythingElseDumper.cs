@@ -14,7 +14,12 @@ namespace CantRunLinqPad.Core.Dumpers
         {
             WriteLine(JsonConvert.SerializeObject(obj, Formatting.Indented, new JsonSerializerSettings
             {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                NullValueHandling = NullValueHandling.Ignore,
+                DefaultValueHandling = DefaultValueHandling.Ignore,
+                Error  = (s, args) => {
+                    args.ErrorContext.Handled = true;
+                }
             }));
         }
     }
