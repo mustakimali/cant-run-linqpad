@@ -12,15 +12,22 @@ namespace CantRunLinqPad.Core.Dumpers
 
         public void Dump(object obj)
         {
-            WriteLine(JsonConvert.SerializeObject(obj, Formatting.Indented, new JsonSerializerSettings
+            try
             {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-                NullValueHandling = NullValueHandling.Ignore,
-                DefaultValueHandling = DefaultValueHandling.Ignore,
-                Error  = (s, args) => {
-                    args.ErrorContext.Handled = true;
-                }
-            }));
+                ConsoleDump.Extensions.DumpObject(obj);
+            }
+            catch (System.Exception)
+            {
+                WriteLine(JsonConvert.SerializeObject(obj, Formatting.Indented, new JsonSerializerSettings
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                    NullValueHandling = NullValueHandling.Ignore,
+                    DefaultValueHandling = DefaultValueHandling.Ignore,
+                    Error  = (s, args) => {
+                        args.ErrorContext.Handled = true;
+                    }
+                }));
+            }
         }
     }
 }
