@@ -15,7 +15,7 @@ namespace CantRunLinqPad.Core
         private const string NugetReferenceLineStartWith = "#r ";
         private const string CSharpCommentLineStartWith = "//";
 
-        private static readonly Regex ParseNugetCommand = new Regex(@"(Install-Package |dotnet add package )([^ ]*).*[Vv]ersion ([0-9.]*]*)", RegexOptions.Compiled);
+        private static readonly Regex ParseNugetCommand = new Regex(@"(Install-Package |dotnet add package )([^ ]*).*[Vv]ersion (.*)$", RegexOptions.Compiled);
         private static readonly string Line = new string('-', 70);
 
         public static async Task Init(Func<Task> entryPoint)
