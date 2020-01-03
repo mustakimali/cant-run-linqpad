@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace CantRunLinqPad.Core
@@ -20,7 +19,7 @@ namespace CantRunLinqPad.Core
 
         public bool Equals(NugetReference other)
         {
-            return other.PackageName == PackageName && other.Version == Version;
+            return other.PackageName == PackageName;
         }
     }
 
@@ -97,7 +96,10 @@ namespace CantRunLinqPad.Core
             foreach (var pkg in refs)
             {
                 var tmpDoc = new XmlDocument();
-                tmpDoc.LoadXml($"<PackageReference Include=\"{pkg.PackageName}\" Version=\"{pkg.Version}\" />");
+                var xml = string.IsNullOrEmpty(pkg.Version)
+                            ? $"<PackageReference Include=\"{pkg.PackageName}\" />"
+                            : $"<PackageReference Include=\"{pkg.PackageName}\" Version=\"{pkg.Version}\" />";
+                tmpDoc.LoadXml(xml);
                 itemGroupNode.AppendChild(doc.ImportNode(tmpDoc.FirstChild, false));
 
                 $"Detected NuGet Package: {pkg.PackageName}, v{pkg.Version}".Dump();
@@ -116,7 +118,7 @@ namespace CantRunLinqPad.Core
             foreach (XmlNode existingRef in existingRefs)
             {
                 var name = existingRef.Attributes["Include"].Value;
-                var version = existingRef.Attributes["Version"].Value;
+                var version = existingRef.Attributes["Version"]?.Value ?? string.Empty;
 
                 yield return new NugetReference(name, version);
             }

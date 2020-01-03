@@ -22,7 +22,10 @@ namespace CantRunLinqPad.Core
         {
             if (!string.IsNullOrEmpty(title))
             {
+                BackgroundColor = System.ConsoleColor.Yellow;
+                ForegroundColor = System.ConsoleColor.Black;
                 WriteLine(title);
+                ResetColor();
             }
             
             if(obj == null)
