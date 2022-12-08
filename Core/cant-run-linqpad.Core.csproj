@@ -8,6 +8,6 @@
 
   <ItemGroup>
     <PackageReference Include="ConsoleDump" Version="0.7.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 </Project>
